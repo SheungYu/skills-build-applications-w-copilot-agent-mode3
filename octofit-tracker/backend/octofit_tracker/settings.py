@@ -159,3 +159,18 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
+# REST Framework Configuration
+import os
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
+
+# Codespace configuration
+if os.environ.get('CODESPACE_NAME'):
+    CODESPACE_NAME = os.environ.get('CODESPACE_NAME')
+    CODESPACE_URL = f"https://{CODESPACE_NAME}-8000.app.github.dev"
+else:
+    CODESPACE_NAME = 'localhost'
+    CODESPACE_URL = 'http://localhost:8000'
+
